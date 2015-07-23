@@ -80,9 +80,9 @@ class HtmlprettifyCommand(sublime_plugin.TextCommand):
 
   def run_script_on_file(self, temp_file_path):
     try:
-      node_path = PluginUtils.get_node_path()
+      node_path = PluginUtils.get_node_path().encode("utf-8")
       script_path = PLUGIN_FOLDER + "/scripts/run.js"
-      file_path = self.view.file_name()
+      file_path = self.view.file_name().encode("utf-8")
       cmd = [node_path, script_path, temp_file_path, file_path or "?"]
       output = PluginUtils.get_output(cmd)
 
